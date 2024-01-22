@@ -30,9 +30,9 @@
       app
     >
       <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
-      
+      <img src="~/static/icon.png" style="height:60px;"/>
      
-      <v-toolbar-title>{{ title }}</v-toolbar-title>
+      <v-toolbar-title style="font-weight: bold; font-size: large;">{{ title }}</v-toolbar-title>
       <v-spacer />
     
     </v-app-bar>
@@ -64,6 +64,16 @@ export default {
           icon: 'mdi-apps',
           title: 'Bienvenidos',
           to: '/'
+        },
+        {
+          icon: 'mdi-alarm-panel',
+          title: 'Valores',
+          to: '/valores'
+        },
+        {
+          icon: 'mdi-cog',
+          title: 'Configuración',
+          to: '/config'
         }
       ],
       miniVariant: false,
