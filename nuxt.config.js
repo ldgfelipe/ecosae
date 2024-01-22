@@ -32,8 +32,8 @@ export default {
     // https://go.nuxtjs.dev/vuetify
     '@nuxtjs/vuetify',
   ],
-  server: {
-    port: 80 // default: 3000
+ server: {
+    port: 4045 // default: 3000
   },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
