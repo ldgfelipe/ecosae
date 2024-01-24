@@ -1,4 +1,4 @@
-let observer;
+
 import Vuex from "vuex";
 
 import {state} from './modulos/state.js';
@@ -14,3 +14,5 @@ const createStore = () => {
     getters
 })
 }
+
+export default createStore;

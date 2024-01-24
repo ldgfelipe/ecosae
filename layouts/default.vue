@@ -1,6 +1,6 @@
 <template>
   <v-app dark>
-    <v-navigation-drawer
+    <v-navigation-drawer v-if="statusServer"
       v-model="drawer"
       :mini-variant="miniVariant"
       :clipped="clipped"
@@ -28,8 +28,9 @@
       :clipped-left="clipped"
       fixed
       app
+      
     >
-      <v-app-bar-nav-icon @click.stop="drawer = !drawer" />
+      <v-app-bar-nav-icon @click.stop="drawer = !drawer"  v-if="statusServer" />
       <img src="~/static/icon.png" style="height:60px;"/>
      
       <v-toolbar-title style="font-weight: bold; font-size: large;">{{ title }}</v-toolbar-title>
@@ -52,6 +53,7 @@
 </template>
 
 <script>
+import { mapState } from 'vuex'
 export default {
   name: 'DefaultLayout',
   data () {
@@ -81,6 +83,9 @@ export default {
       rightDrawer: false,
       title: 'EcoSae'
     }
+  },
+  computed:{
+    ...mapState(['statusServer'])
   }
 }
 </script>

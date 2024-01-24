@@ -23,9 +23,7 @@ export default {
   ],
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
-  plugins: [
-    '~/plugins/mysql.js'
-  ],
+  plugins: [],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
   components: true,
@@ -58,7 +56,7 @@ export default {
       lang: 'en'
     }
   },
-
+  serverMiddleware: ['~/api/index'],
   // Vuetify module configuration: https://go.nuxtjs.dev/config-vuetify
   vuetify: {
     customVariables: ['~/assets/variables.scss'],
@@ -83,7 +81,8 @@ export default {
     extend (config, { isDev, isClient }) {
  
       config.node = {
-           fs: 'empty'
+           fs: 'empty',
+           Net: 'empty'
        }
 
       // ....
