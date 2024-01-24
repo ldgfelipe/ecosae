@@ -1,4 +1,6 @@
 import colors from 'vuetify/es5/util/colors'
+require('dotenv').config()
+
 
 export default {
   // Global page headers: https://go.nuxtjs.dev/config-head
@@ -22,6 +24,7 @@ export default {
 
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
+    '~/plugins/mysql.js'
   ],
 
   // Auto import components: https://go.nuxtjs.dev/config-components
@@ -33,7 +36,7 @@ export default {
     '@nuxtjs/vuetify',
   ],
  server: {
-    port: 4045 // default: 3000
+    port: 8080 // default: 3000
   },
   // Modules: https://go.nuxtjs.dev/config-modules
   modules: [
@@ -77,5 +80,13 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    extend (config, { isDev, isClient }) {
+ 
+      config.node = {
+           fs: 'empty'
+       }
+
+      // ....
+   }
   }
 }
