@@ -11,7 +11,7 @@ var connection = mysql.createConnection({
   connection.connect();  
 // Create app instance
 const app = express()
-
+var exec = require('child_process').exec;
 // Define JSON as return type
 app.use(express.json())
 app.use(express.urlencoded({ extended: true }))
@@ -34,6 +34,18 @@ app.get('/', (req, res) => {
           })
         })
         res.json({licencia:rows})
+})
+
+app.get('/exec',()=>{
+    exec('git pull origin dev',
+    function (error, stdout, stderr) {
+        console.log('stdout: ' + stdout);
+        console.log('stderr: ' + stderr);
+        if (error !== null) {
+             console.log('exec error: ' + error);
+        }
+    });
+
 })
 
 module.exports = {

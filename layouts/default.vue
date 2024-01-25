@@ -28,8 +28,9 @@
       :clipped-left="clipped"
       fixed
       app
-      
     >
+
+    
       <v-app-bar-nav-icon @click.stop="drawer = !drawer"  v-if="statusServer" />
       <img src="~/static/icon.png" style="height:60px;"/>
      
