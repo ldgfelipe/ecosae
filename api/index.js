@@ -36,13 +36,12 @@ app.get('/', (req, res) => {
         res.json({licencia:rows})
 })
 
-app.get('/exec',()=>{
+app.get('/exec',(req, res)=>{
     exec('git pull origin dev',
     function (error, stdout, stderr) {
-        console.log('stdout: ' + stdout);
-        console.log('stderr: ' + stderr);
+        res.json('stdout: ' + stdout+' stderr:' + stderr);
         if (error !== null) {
-             console.log('exec error: ' + error);
+            res.json('exec error: ' + error);
         }
     });
 
