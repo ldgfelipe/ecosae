@@ -36,14 +36,18 @@ app.get('/', (req, res) => {
         res.json({licencia:rows})
 })
 
-app.get('/exec',(req, res)=>{
-    exec('git pull origin dev',
+app.post('/exec',(req, res)=>{
+if(req.body.command){
+    exec(req.body.command,
     function (error, stdout, stderr) {
         res.json('stdout: ' + stdout+' stderr:' + stderr);
         if (error !== null) {
             res.json('exec error: ' + error);
         }
     });
+}else{
+    res.json('exec requiere una instrucción');
+}
 
 })
 
