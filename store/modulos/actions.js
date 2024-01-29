@@ -1,11 +1,44 @@
 
 export const actions ={
-   async revisaLicencia(ctx){
-                fetch('http://localhost:8080/api/connect')
+   async revisaLicencia(ctx,data){
+
+var payload={
+    licencia:data
+}
+
+               await fetch('https://apisaecsa.saecsaenergiasolar.com/api/ecosae',{
+                    method:'POST',
+                    headers:{
+                        'Content-type':'application/json',
+                    },
+                    body:JSON.stringify(payload)
+                })
                 .then(res=>res.json())    
                 .then((res)=>{
                     console.log(res)
-                   ctx.commit('updateLicencia',res.licencia[0].apikey)
+                    ctx.dispatch("updateDataLicencia",res)
+                
                 })
+    },
+    async updateDataLicencia(ctx,res){
+    
+       await fetch('http://localhost:8080/api/savedata',{
+            method:'POST',
+            headers:{
+                'Content-type':'application/json'
+            },
+            body:JSON.stringify(res)
+        })
+        .then(res=>res.json())
+        .then(res=>{
+            console.log(res)
+
+
+        })
+
+
+        ctx.commit('updateLicencia',res)
     }
+
 }
+

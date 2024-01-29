@@ -15,9 +15,9 @@
 
          <v-card class="pa-5" v-if="!statusServer">
           <v-card-text>
-           <v-text-field outlined label="Ingrese su numero de licencia"></v-text-field>
+           <v-text-field v-model="vlicencia" outlined label="Ingrese su numero de licencia" ></v-text-field>
 
-           <v-btn class="red white--text">Validar</v-btn>
+           <v-btn class="red white--text" @click="validalicencia()">Validar</v-btn>
           </v-card-text>
          </v-card>
 
@@ -38,16 +38,21 @@ export default {
   name: 'IndexPage',
   data(){
     return {
+      vlicencia:""
     }
   },
   computed:{
     ...mapState(['datoslicencia','licencia','statusServer'])
   },
   methods:{
-    ...mapActions(['revisaLicencia'])
+    ...mapActions(['revisaLicencia',]),
+    validalicencia(){
+      this.revisaLicencia(this.vlicencia)
+      
+    }
   },
   created(){
-    this.revisaLicencia()
+   
   }
 }
 </script>

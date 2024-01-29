@@ -36,6 +36,34 @@ app.get('/', (req, res) => {
         res.json({licencia:rows})
 })
 
+
+app.post('/savedata',  (req, res)=>{
+var data = req.body
+
+  if(data.licencia){
+
+
+    var payload = {
+      licencia:data.licencia,
+      nombre:data.nombre,
+      correo:data.correo,
+      status:data.status
+    }
+
+
+    var query=connection.query('INSERT INTO licencia SET ? ',payload,function(error,results, fields){
+
+      if (error) {
+        res.json(error)
+      }else{
+      res.json("Registro Correcto")
+      }
+    }) 
+}else{
+    res.json('requiere datos para actualizar');
+}
+})
+
 app.post('/exec',(req, res)=>{
 if(req.body.command){
     exec(req.body.command,
