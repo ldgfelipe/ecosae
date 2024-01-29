@@ -24,7 +24,7 @@ var payload={
    
         
     
-       await fetch('http://'+window.location.hostname+':8080/api/savedata',{
+       await fetch('http://'+window.location.hostname+'/api/savedata',{
             method:'POST',
             headers:{
                 'Content-type':'application/json'
