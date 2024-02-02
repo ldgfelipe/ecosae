@@ -20,14 +20,13 @@ app.get('/', (req, res) => {
   res.json({ message: 'SAECSA-rest ok' })
 })
 
+//// 
+
  app.get('/connect', async(req, res)=>{
-
-
         var rows = await new Promise((resolve, reject) => {
           connection.query('SELECT * FROM licencia', (error, results) => {
             if (error) {
               reject(error)
-        
             } else {
               resolve(results)
             }
@@ -36,6 +35,22 @@ app.get('/', (req, res) => {
         res.json({licencia:rows})
 })
 
+
+/// valida licencia registrada 
+app.get('/validaKey',async(req,res)=>{
+
+  var query= await connection.query('SELECT * FROM licencia',function(error, result){
+
+    if(error){
+      res.json(error)
+    }else{
+      res.json(result)
+    }
+  })
+
+
+
+})
 
 app.post('/savedata',  (req, res)=>{
 var data = req.body
@@ -49,8 +64,6 @@ var data = req.body
       correo:data.correo,
       status:data.status
     }
-
-
     var query=connection.query('INSERT INTO licencia SET ? ',payload,function(error,results, fields){
 
       if (error) {

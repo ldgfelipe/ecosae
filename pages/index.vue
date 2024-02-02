@@ -18,6 +18,8 @@
            <v-text-field v-model="vlicencia" outlined label="Ingrese su numero de licencia" ></v-text-field>
 
            <v-btn class="red white--text" @click="validalicencia()">Validar</v-btn>
+<br />
+           {{ mensaje }}
           </v-card-text>
          </v-card>
 
@@ -42,7 +44,7 @@ export default {
     }
   },
   computed:{
-    ...mapState(['datoslicencia','licencia','statusServer'])
+    ...mapState(['datoslicencia','licencia','statusServer','mensaje'])
   },
   methods:{
     ...mapActions(['revisaLicencia',]),
