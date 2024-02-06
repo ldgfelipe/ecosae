@@ -72,7 +72,7 @@ var payload={
             url='http://'+window.location.hostname+':'+window.location.port
         }else{
             url='http://'+window.location.hostname
-        }
+        }           
         var codigo="";
 
         switch(data.tipo){
@@ -86,7 +86,7 @@ var payload={
                             codigo="sudo pm2 restart all";
                             break;
                         case 'actualiza-sistema':
-                            codigo="git pull origin dev";
+                            codigo="git pull origin dev   git merge sudo pm2 restart all";
                             break;
                     }
 

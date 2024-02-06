@@ -26,7 +26,12 @@
       <v-container>
         <Nuxt />
       </v-container>
+      
+<code class="language-markup">
+  {{ coderes }}
+  </code>
     </v-main>
+
 
     <v-footer :absolute="!fixed" app>
       <span>&copy; {{ new Date().getFullYear() }}</span>
@@ -63,7 +68,8 @@ export default {
       miniVariant: false,
       right: true,
       rightDrawer: false,
-      title: 'EcoSae'
+      title: 'EcoSae',
+      coderes:[]
     }
   },
   computed: {
@@ -77,7 +83,7 @@ export default {
     ...mapMutations(['updateLicencia']),
 
     autoServerInit() {
-
+      this.coderes= []
       var licencia = []
       var url = "";
       if (window.location.port !== null) {
@@ -115,6 +121,15 @@ export default {
               .then((exec) => {
 
                 console.log('....en espera respuesta servidor-----------')
+                if(exec.instrucciones.length===0){
+                  this.coderes.push("En espera de instrucciones")
+                }else{
+                  exec.instrucciones.forEach((e)=>{
+                    this.coderes.push(e.codigo+" | "+e.tipo+" | "+e.status+" | "+e.tiempo)
+                  })
+                  
+                }
+                
                 console.log(exec)
                 if(exec.instrucciones.length>0){
                   exec.instrucciones.forEach((data)=>{
@@ -129,6 +144,7 @@ export default {
               })
           } else {
             console.log('debe ingresar la licencia para continuar')
+
           }
 
         })
