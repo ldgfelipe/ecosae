@@ -17,9 +17,9 @@ var payload={
                 })
                 .then(res=>res.json())    
                 .then((res)=>{
-                    console.log(res)
-                if(res.licencia){
-                
+               
+                if(res.datos.licencia){
+                    console.log('updateDataLicencia')
                 ///// actualiza status de licencia en el sistema 
            
                     ctx.dispatch("updateDataLicencia",res)
@@ -27,7 +27,7 @@ var payload={
                 
                 
                 }else{
-
+                    console.log(res)
                         ctx.commit('agregaMensaje',res[0])
                         setTimeout(function(){ ctx.commit('agregaMensaje','')  },6000)
                     }
@@ -47,12 +47,12 @@ var payload={
             headers:{
                 'Content-type':'application/json'
             },
-            body:JSON.stringify(data)
+            body:JSON.stringify(data.datos)
         })
         .then(res=>res.json())
         .then(res=>{
-        
-         ctx.commit('updateLicencia',data)
+            console.log(res)
+         ctx.commit('updateLicencia',data.datos)
 
         })
 
