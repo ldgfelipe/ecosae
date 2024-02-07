@@ -83,7 +83,7 @@ var payload={
                             codigo="sudo systemctl restart ngnix";
                             break;
                         case 'reinicio-pm2':
-                            codigo="sudo pm2 restart 2";
+                            codigo="pm2 restart 2";
                             break;
                         case 'actualiza-sistema':
                             codigo="git pull origin dev   git merge sudo pm2 restart all";
