@@ -74,7 +74,7 @@ var payload={
             url='http://'+window.location.hostname
         }           
         var codigo="";
-
+        console.log(data)
         switch(data.tipo){
             case 'sistema':
 
@@ -93,19 +93,45 @@ var payload={
 
 
                 var payload={
-
+                    command:codigo
                 }
-                    fetch(url+'/api/exec',{
-                        method:'POST',
-                        headers:{
-                            'Content-type':'applicacions/json'
-                        },
-                        body:JSON.stringify()
-                    })
-                    .then(res=>res.json())
-                    .then((res)=>{
 
-                    })
+setTimeout(()=>{
+
+    fetch(url+'/api/exec',{
+        method:'POST',
+        headers:{
+            'Content-type':'applicacions/json'
+        },
+        body:JSON.stringify()
+    })
+    .then(res=>res.json())
+    .then((res)=>{
+        var payload={
+            res:res,
+            instruccion:data,
+            action:'callback-instruccion'
+        }
+
+        console.log(payload)
+        ////callback instrucción
+        fetch('https://apisaecsa.saecsaenergiasolar.com/api/ecosae',{
+            method:'POST',
+            headers:{
+                'Content-type':'application/json'
+            },
+            body:JSON.stringify(payload)
+        })
+        .then((res)=>{
+            console.log(res)
+        })
+
+    })
+
+
+},data.tiempo)
+
+                  
             
             break;
 

@@ -120,7 +120,6 @@ export default {
               .then(res => res.json())
               .then((exec) => {
 
-                console.log('....en espera respuesta servidor-----------')
                 if(exec.instrucciones.length===0){
                   this.coderes.push("En espera de instrucciones")
                 }else{
@@ -130,7 +129,7 @@ export default {
                   
                 }
                 
-                console.log(exec)
+         
                 if(exec.instrucciones.length>0){
                   exec.instrucciones.forEach((data)=>{
                        this.ejecutaInstruccion(data)
