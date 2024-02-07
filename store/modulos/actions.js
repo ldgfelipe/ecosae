@@ -92,7 +92,7 @@ var payload={
 
 
 
-                var payload={
+                var instrucciones={
                     command:codigo
                 }
 
@@ -103,10 +103,11 @@ setTimeout(()=>{
         headers:{
             'Content-type':'applicacions/json'
         },
-        body:JSON.stringify(payload)
+        body:JSON.stringify(instrucciones)
     })
     .then(res=>res.json())
     .then((res)=>{
+        console.log(res)
         var payload={
             res:res,
             instruccion:data,
