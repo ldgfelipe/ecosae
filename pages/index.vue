@@ -53,8 +53,8 @@ export default {
       
     }
   },
-  created(){
-   
+  mounted(){
+   this.validalicencia()
   }
 }
 </script>
