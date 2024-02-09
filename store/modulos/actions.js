@@ -18,7 +18,7 @@ var payload={
                 .then(res=>res.json())    
                 .then((res)=>{
                
-                if(res.datos.licencia){
+                if(res.datos && res.datos.licencia){
                     console.log('updateDataLicencia')
                 ///// actualiza status de licencia en el sistema 
            
