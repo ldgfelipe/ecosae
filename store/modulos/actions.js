@@ -90,6 +90,9 @@ var payload={
                         case 'actualiza-sistema':
                             codigo="git pull origin dev   git merge sudo pm2 restart all";
                             break;
+                         case 'ifconfig':
+                            codigo='ifconfig';
+                            break;   
                     }
 
 
