@@ -17,7 +17,7 @@ var payload={
                 })
                 .then(res=>res.json())    
                 .then((res)=>{
-               
+                    console.log(res)
                 if(res.datos && res.datos.licencia){
                     console.log('updateDataLicencia')
                 ///// actualiza status de licencia en el sistema 
@@ -41,6 +41,8 @@ var payload={
         }else{
             url='http://'+window.location.hostname+'/api/savedata'
         }
+
+        console.log(url)
     
        await fetch(url,{
             method:'POST',
